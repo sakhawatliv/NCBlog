@@ -5,12 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="Microsoft.EntityFrameworkCore">
-      <HintPath>C:\Users\Sakhawat\.nuget\packages\microsoft.entityframeworkcore\2.2.0\lib\netstandard2.0\Microsoft.EntityFrameworkCore.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.EntityFrameworkCore.Relational">
-      <HintPath>C:\Users\Sakhawat\.nuget\packages\microsoft.entityframeworkcore.relational\2.2.0\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Relational.dll</HintPath>
-    </Reference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.2" />
   </ItemGroup>
 
 </Project>

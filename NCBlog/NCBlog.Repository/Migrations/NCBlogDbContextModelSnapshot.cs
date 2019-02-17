@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using NCBlog.Api.Models.DbContext;
+using NCBlog.Repository.DbContext;
 
-namespace NCBlog.Api.Migrations
+namespace NCBlog.Repository.Migrations
 {
     [DbContext(typeof(NCBlogDbContext))]
     partial class NCBlogDbContextModelSnapshot : ModelSnapshot
@@ -14,7 +14,7 @@ namespace NCBlog.Api.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.1-servicing-10028")
+                .HasAnnotation("ProductVersion", "2.2.2-servicing-10034")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 

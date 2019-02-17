@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 using Microsoft.EntityFrameworkCore;
 using NCBlog.Model;
 
-namespace NCBlog.Api.Models.DbContext
+namespace NCBlog.Repository.DbContext
 {
     public class NCBlogDbContext:Microsoft.EntityFrameworkCore.DbContext
     {

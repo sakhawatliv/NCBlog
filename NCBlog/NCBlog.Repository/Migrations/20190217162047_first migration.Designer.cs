@@ -4,19 +4,19 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using NCBlog.Api.Models.DbContext;
+using NCBlog.Repository.DbContext;
 
-namespace NCBlog.Api.Migrations
+namespace NCBlog.Repository.Migrations
 {
     [DbContext(typeof(NCBlogDbContext))]
-    [Migration("20190215031834_FirstMigration")]
-    partial class FirstMigration
+    [Migration("20190217162047_first migration")]
+    partial class firstmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.1-servicing-10028")
+                .HasAnnotation("ProductVersion", "2.2.2-servicing-10034")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 

@@ -13,7 +13,7 @@ namespace NCBlog.Repository.DbContext
 
         }
 
-        public DbSet<UserTypes> UserTypeses { get; set; }
+        public DbSet<Model.UserTypes> UserTypeses { get; set; }
         public DbSet<WriteBlog> WriteBlogs { get; set; }
     }
 }

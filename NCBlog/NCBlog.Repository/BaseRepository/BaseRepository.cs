@@ -3,54 +3,46 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using NCBlog.Repository.DbContext;
 
 namespace NCBlog.Repository.BaseRepository
 {
-    public class BaseRepository<T>:IBaseRepository<T> where T:class 
+    public class BaseRepository<T>:IBaseRepository<T> where T:class
     {
-        private NCBlogDbContext _naBlogDbContext;
-
-        public BaseRepository(NCBlogDbContext ncBlogDbContext)
+        protected NCBlogDbContext _dbContext;
+        public BaseRepository(NCBlogDbContext context)
         {
-            _naBlogDbContext = ncBlogDbContext;
+            _dbContext = context;
         }
 
-
-        public void Dispose()
+        public DbSet<T> Table
         {
-            throw new NotImplementedException();
+            get { return _dbContext.Set<T>(); }
         }
-
-        public async Task<T> Insert(T entity)
+        public void Insert(T entity)
         {
-            await _naBlogDbContext.AddAsync(entity);
-            await _naBlogDbContext.SaveChangesAsync();
+            var item = Table.Add(entity);
+            _dbContext.SaveChanges();
+
+        }
+        public T Update(T entity)
+        {
+            _dbContext.Entry(entity).State = EntityState.Modified;
+            _dbContext.SaveChanges();
             return entity;
         }
-
-        public bool Update(T entity)
+        public T GetById(int id)
         {
-            throw new NotImplementedException();
+            var item = Table.Find(id);
+            return item;
         }
-
-        public bool Remove(T entity)
+        public IList<T> GetAll()
         {
-            throw new NotImplementedException();
+            var list = Table.ToList();
+            return list;
         }
-
-        public Model.UserTypes GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        //public Model.UserTypes GetById(int id)
-        //{
-        //    var dd = _naBlogDbContext.UserTypeses.Where(c =>c.Id ==id).ToList();
-        //    return dd;
-        //}
-
-        public ICollection<T> GetAll()
+        public void Dispose()
         {
             throw new NotImplementedException();
         }

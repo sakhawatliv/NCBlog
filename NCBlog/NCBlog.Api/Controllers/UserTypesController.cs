@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp;
 using NCBlog.Model;
 using NCBlog.Repository.DbContext;
 using NCBlog.Repository.UserTypes;
@@ -17,40 +18,36 @@ namespace NCBlog.Api.Controllers
         private IUserTypesRepository _userTypesRepository;
         private NCBlogDbContext _context;
 
-        public UserTypesController()
+        public UserTypesController(NCBlogDbContext context)
         {
+            _context = context;
             _userTypesRepository = new UserTypesRepository(_context);
         }
         [HttpGet]
-        //public List<UserTypes> GetAll()
-        //{
-        //    userTypeses =  new List<UserTypes>()
-        //    {
-        //        new UserTypes
-        //        {
-        //            Id = 1,
-        //            TypeName = "Admin"
-        //        },
-        //        new UserTypes
-        //        {
-        //            Id = 2,
-        //            TypeName = "User"
-        //        }
-        //    };
-        //    return userTypeses;
-        //}
-
-        public UserTypes GetById(int d)
+        public IList<UserTypes> GetAll()
         {
-           return _userTypesRepository.GetById(1);
+            return _userTypesRepository.GetAll();
         }
-        
-        [HttpPost]
-        public async Task<IActionResult> Post([FromBody] UserTypes userTypes)
+        [HttpGet("{id}")]
+        public UserTypes GetById([FromRoute]int id)
         {
+            return _userTypesRepository.GetById(id);
+        }
+        [HttpPost]
+        public IActionResult Post([FromBody] UserTypes userTypes)
+        {
+            if (userTypes.Id == 0)
+            {
+                _userTypesRepository.Insert(userTypes);
+                return Ok();
+            }
+            else
+            {
+                _userTypesRepository.Update(userTypes);
+                return Ok();
+            }
 
-            await _userTypesRepository.Insert(userTypes);
-            return Ok();
+            
         }
     }
 }

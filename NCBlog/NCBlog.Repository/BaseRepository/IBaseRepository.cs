@@ -7,10 +7,10 @@ namespace NCBlog.Repository.BaseRepository
 {
     public interface IBaseRepository<T>:IDisposable where T:class
     {
-        Task<T> Insert(T entity);
-        bool Update(T entity);
-        bool Remove(T entity);
-        Model.UserTypes GetById(int id);
-        ICollection<T> GetAll();
+        T GetById(int id);
+        IList<T> GetAll();
+        void Insert(T entity);
+        T Update(T entity);
+        
     }
 }

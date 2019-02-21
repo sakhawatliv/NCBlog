@@ -15,5 +15,10 @@ namespace NCBlog.Repository.DbContext
 
         public DbSet<Model.UserTypes> UserTypeses { get; set; }
         public DbSet<WriteBlog> WriteBlogs { get; set; }
+        public DbSet<Users> Users { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<PostComment> PostComments { get; set; }
+        public DbSet<BlogPost> BlogPosts { get; set; }
+        
     }
 }

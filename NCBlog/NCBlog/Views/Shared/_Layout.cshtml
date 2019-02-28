@@ -126,7 +126,12 @@
     </div>
 
 
-    <h1>Test</h1>
+<div class="container">
+    <partial name="_CookieConsentPartial" />
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+</div>
 
 
 
@@ -149,12 +154,7 @@
 </div>
 
 
-<div class="container">
-    <partial name="_CookieConsentPartial" />
-    <main role="main" class="pb-3">
-        @RenderBody()
-    </main>
-</div>
+
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

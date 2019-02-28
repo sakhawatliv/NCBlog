@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NCBlog.Repository.DbContext;
 
 namespace NCBlog.Repository.Migrations
 {
     [DbContext(typeof(NCBlogDbContext))]
-    partial class NCBlogDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190226152240_BlogPost and comment relation added")]
+    partial class BlogPostandcommentrelationadded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

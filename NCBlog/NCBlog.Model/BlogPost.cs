@@ -11,8 +11,7 @@ namespace NCBlog.Model
         public int CategoryId { get; set; }
         public Category Category { get; set; }
         public DateTime PostDate { get; set; }
-        public string PostContentId { get; set; }
-        public PostComment PostComment { get; set; }
+        public List<PostComment> PostComments { get; set; }
         public string Description { get; set; }
         public int UsersId { get; set; }
         public Users Users { get; set; }

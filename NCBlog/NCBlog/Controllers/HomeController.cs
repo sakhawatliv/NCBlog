@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using NCBlog.Helpers;
@@ -11,10 +12,25 @@ namespace NCBlog.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var lsitCountry = NCBlogHttpClient.GetAsync<List<string>>("http://localhost:62876", $"api/values", Request);
-            return View();
+            var response = await NCBlogHttpClient.GetAsync("http://localhost:65031", $"api/BlogPosts", Request);
+            var list = await response.Content.ReadAsAsync<List<BlogPostViewModel>>() ?? new List<BlogPostViewModel>();
+            return View(list);
+        }
+        [HttpGet]
+        public async Task<IActionResult> Details(int? id)
+        {
+            var list = await NCBlogHttpClient.GetAsync<BlogPostViewModel>("http://localhost:65031", $"api/BlogPosts/{id}",
+                Request);
+            if (list != null)
+            {
+                return View(list);
+            }
+            else
+            {
+               return NotFound();
+            }
         }
 
         public IActionResult Privacy()

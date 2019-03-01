@@ -18,6 +18,31 @@ namespace NCBlog.Controllers
             var list = await response.Content.ReadAsAsync<List<BlogPostViewModel>>() ?? new List<BlogPostViewModel>();
             return View(list);
         }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(BlogPostViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                //model.CreateDate = DateTime.UtcNow;
+                //model.CreateBy = currentUser.UserId;
+                var response = await NCBlogHttpClient.PostAsync("http://localhost:65031", $"api/BlogPosts", model, Request);
+                if (response.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return View(model);
+                }
+            }
+
+            return View(model);
+        }
         [HttpGet]
         public async Task<IActionResult> Details(int? id)
         {
@@ -32,6 +57,8 @@ namespace NCBlog.Controllers
                return NotFound();
             }
         }
+
+
 
         public IActionResult Privacy()
         {

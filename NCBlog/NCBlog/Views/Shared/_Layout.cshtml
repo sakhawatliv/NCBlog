@@ -83,15 +83,19 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                            @Html.ActionLink("Home","Index","home", new object { },
+                                new { @class = "nav-link" })
+                            @*<a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>*@
                         </li>
-                        <li class="nav-item ">
+                        @*<li class="nav-item ">
                             <a class="nav-link" href="blog.html">Blog <span class="sr-only">(current)</span></a>
-                        </li>
+                        </li>*@
                         <li class="nav-item ">
-                            <a class="nav-link" href="single.html">Single <span class="sr-only">(current)</span></a>
+                            @Html.ActionLink("Sign Up","Index","Users", new object { },
+                                new { @class = "nav-link" })
+                            @*<a class="nav-link" href="Users/Create">Usin Up <span class="sr-only">(current)</span></a>*@
                         </li>
-                        <li class="nav-item dropdown">
+                        @*<li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="dropdownMenuButton2" data-toggle="dropdown"
                                aria-haspopup="true" aria-expanded="false">World<span class="sr-only">(current)</span></a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink_1">
@@ -108,7 +112,7 @@
                                 <a class="dropdown-item" href="#">Another action</a>
                                 <a class="dropdown-item" href="#">Something else here</a>
                             </div>
-                        </li>
+                        </li>*@
                         <li class="nav-item ">
                             <a class="nav-link" href="Contact_us.html">Contact <span class="sr-only">(current)</span></a>
                         </li>
